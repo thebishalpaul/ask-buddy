@@ -1,0 +1,99 @@
+[
+    {
+        "title": "First Semester",
+        "childrens": [
+            {
+                "title": "Operating System",
+                "icon": "../images/OS.png",
+                "path": "/"
+            },
+            {
+                "title": "Data Structure Analysis and Algorithm",
+                "icon": "bi-info-circle-fill",
+                "path": "/about"
+            },
+            {
+                "title": "Java",
+                "icon": "bi-phone-fill",
+                "path": "/about"
+            },
+            {
+                "title": "DBMS",
+                "icon": "bi-question-circle-fill"
+            },
+            {
+                "title": "LAB",
+                "path": "/reset-password"
+            }
+        ]
+    },
+    {
+        "title": "Second Semester",
+        "icon": "bi-info-circle-fill",
+        "childrens": [
+            {
+                "title": "Advance Data Structure",
+                "path": "/login",
+                "icon": "../img/OS.png"
+            },
+            {
+                "title": "Distributed Systems",
+                "path": "/register"
+            },
+            {
+                "title": "Computer Networks",
+                "path": "/forgot-password"
+            },
+            {
+                "title": "Software Engineering",
+                "path": "/reset-password"
+            },
+            {
+                "title": "Theory of Computation",
+                "path": "/reset-password"
+            }
+        ]
+    },
+    {
+        "title": "Third Semester",
+        "icon": "bi-person-fill",
+        "childrens": [
+            {
+                "title": "Profile",
+                "path": "/profile"
+            },
+            {
+                "title": "Settings",
+                "path": "/profile"
+            },
+            {
+                "title": "Notifications",
+                "path": "/settings/notifications"
+            }
+        ]
+    },
+    {
+        "title": "Fourth Semester",
+        "icon": "bi-view-list",
+        "childrens": [
+            {
+                "title": "Search",
+                "path": "/search"
+            },
+            {
+                "title": "History",
+                "path": "/history"
+            }
+        ]
+    },
+    {
+        "title": "Scholarship",
+        "icon": "bi-question-circle-fill",
+        "path": "/support"
+    },
+    {
+        "title": "Placements",
+        "icon": "bi-bug",
+        "path": "/report-bug"
+    }
+]
