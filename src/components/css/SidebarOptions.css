@@ -89,3 +89,7 @@
     display: inline-block;
     width: 1.7em;
   }
+  .sidebarItem{
+    display: flex;
+    margin: 15px;
+  }
