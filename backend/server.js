@@ -22,7 +22,7 @@ app.get("*", (req, res) => {
 })
 
 //mongodb connection
-connectDb("mongodb+srv://bishalpaul34:qwerty2@cluster0.qhb870e.mongodb.net/")
+connectDb("mongodb+srv://bishalpaul34:qwerty2@cluster0.qhb870e.mongodb.net/ask-buddy?retryWrites=true&w=majority")
     .then(console.log("MongoDb connected successfully"))
     .catch((e) => console.log("DB Connection", e));
 
@@ -30,15 +30,12 @@ connectDb("mongodb+srv://bishalpaul34:qwerty2@cluster0.qhb870e.mongodb.net/")
 app.use(cors());
 
 //routes
-// app.use("/api",route);
 app.use('/', staticRouter);
 app.use('/questions', questionRouter);
 app.use('/answers', answerRouter);
-
 
 
 // server listening
 app.listen(process.env.PORT || PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
-

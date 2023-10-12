@@ -4,14 +4,14 @@ const saveQuestiontoDb = async (req, res) => {
     console.log(req.body);
     try {
         await questionDb.create({
-            questionname: req.body.questionName,
+            questionName: req.body.questionName,
             questionUrl: req.body.questionUrl
         }).then(() => {
             res.status(201).send({
                 status: true,
                 message: "Question added successfully"
             })
-        }).catch((e)=>{
+        }).catch((e) => {
             res.status(400).send({
                 status: false,
                 message: "Bad format of Question"
@@ -25,6 +25,14 @@ const saveQuestiontoDb = async (req, res) => {
     }
 }
 
+const getQuestions=async (req,res)=>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
 module.exports = {
     saveQuestiontoDb,
+    getQuestions
 }
