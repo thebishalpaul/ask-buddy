@@ -1,8 +1,18 @@
 import React from 'react'
-
+import FirstBox from './FirstBox'
+import "./css/Feed.css"
+import Post from './Post'
 function Feed() {
   return (
-    <div>Feed</div>
+    <div className="feed">
+      <FirstBox />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+    </div>
   )
 }
 

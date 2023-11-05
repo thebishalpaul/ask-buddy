@@ -1,10 +1,15 @@
 //Header named as Navbar
-import React from 'react'
+import React, { useState } from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import { Avatar, Button } from '@mui/material';
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
+import CloseIcon from '@mui/icons-material/Close';
 import './css/Navbar.css'
 function Navbar() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeIcon = <CloseIcon />;
   return (
     <div className='nav'>
       <div className="content">
@@ -21,7 +26,7 @@ function Navbar() {
           </div>
         </div>
 
-          <div className="subContent2"> 
+        <div className="subContent2">
           <div className="dp">
             <Avatar
               alt="Remy Sharp"
@@ -29,7 +34,21 @@ function Navbar() {
               sx={{ width: 56, height: 56 }}
             />
           </div>
-          <Button variant="contained" sx={{ background: "black" }}>Ask Question</Button>
+          <Button variant="contained" sx={{ background: "black" }}
+            onClick={() => setIsModalOpen(true)}
+          >Ask Question</Button>
+          <Modal
+            open={isModalOpen}
+            closeIcon={closeIcon}
+            onClose={() => setIsModalOpen(false)}
+            closeOnEsc
+            center
+            closeOnOverlayClick={false}
+          >
+            <div className="modalTitle">
+              Title Here
+            </div>
+          </Modal>
         </div>
       </div>
     </div>

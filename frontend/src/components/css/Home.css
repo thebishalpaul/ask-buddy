@@ -1,11 +1,11 @@
 .home {
-    width: "100%";
+    width: 100%;
     min-width: fit-content;
   }
 
 .allComponents{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     padding: 50px 0;
     background-color: rgba(0, 0, 0, 0.05);
     min-width: fit-content;
