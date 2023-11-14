@@ -2,13 +2,17 @@
 import React, { useState } from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
-import { Avatar, Button } from '@mui/material';
+import { Avatar, Button, Input } from '@mui/material';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import CloseIcon from '@mui/icons-material/Close';
-import './css/Navbar.css'
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import "./css/Navbar.css"
 function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const [inputUrl,setInputUrl]=useState("");
   const closeIcon = <CloseIcon />;
   return (
     <div className='nav'>
@@ -46,7 +50,40 @@ function Navbar() {
             closeOnOverlayClick={false}
           >
             <div className="modalTitle">
-              Title Here
+              <h5>Add Question</h5>
+              {/* <h5>Share Link</h5> */}
+            </div>
+            <div className="modalInfo">
+              <Avatar className='avatar' />
+              <div className="modalScope">
+                <PeopleAltIcon />
+                <p>Public</p>
+                <ExpandMoreIcon />
+              </div>
+            </div>
+            <div className="modalField">
+              <Input
+                type="text"
+                placeholder='ask your question here...' />
+              {/* <div className="inputForLink">
+                <input 
+                type="text" 
+                value={inputUrl}
+                onChange={(e)=>setInputUrl(e.target.value)}
+                placeholder='Optional: include a link that give context' />
+                {
+                  inputUrl!=="" && <img src={inputUrl} alt="urlImage" />
+                }
+                
+              </div> */}
+            </div>
+            <div className="modalButtons">
+              <button className='cancel' onClick={() => setIsModalOpen(false)}>
+                Cancel
+              </button>
+              <button type='submit' className='askButton'>
+                Ask Question
+              </button>
             </div>
           </Modal>
         </div>

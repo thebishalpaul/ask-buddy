@@ -4,9 +4,20 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import InsertCommentIcon from '@mui/icons-material/InsertComment';
-import React from 'react'
+import React, { useState } from 'react'
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
+import CloseIcon from '@mui/icons-material/Close';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import './css/Post.css'
 function Post() {
+    const [isAnsModalOpen, setIsAnsModalOpen] = useState(false);
+    const closeIcon = <CloseIcon />;
+    var toolbarOptions = [{ 'size': ['small', false, 'large', 'huge'] },'bold', 'italic', 'link', 'image', 'underline', 'code-block', { 'list': 'ordered' }, { 'list': 'bullet' }, ];
+    const module = {
+        toolbar: toolbarOptions,
+    }
     return (
         <div className="post">
             <div className="postInfo">
@@ -19,7 +30,37 @@ function Post() {
                     <p>
                         Question Here
                     </p>
-                    <button className='ansBtn'>Answer</button>
+                    <button
+                        className='ansBtn'
+                        onClick={() => setIsAnsModalOpen(true)}
+                    >Answer</button>
+                    <Modal
+                        open={isAnsModalOpen}
+                        closeIcon={closeIcon}
+                        onClose={() => setIsAnsModalOpen(false)}
+                        closeOnEsc
+                        center
+                        closeOnOverlayClick={false}
+                    >
+                        <div className="modalQuestion">
+                            <h1>Question Here</h1>
+                            <p>Asked by <span className='name'>Username</span> on <span className='name'>timestamp</span></p>
+                        </div>
+                        <div className="modalAns">
+                            <ReactQuill
+                                modules={module}
+                                placeholder='Enter your answer'
+                            />
+                        </div>
+                        <div className="modalButtons">
+                            <button className='cancel' onClick={() => setIsAnsModalOpen(false)}>
+                                Cancel
+                            </button>
+                            <button type='submit' className='ansButton'>
+                                Aswere
+                            </button>
+                        </div>
+                    </Modal>
                 </div>
             </div>
             <div className="postFooter">
@@ -27,8 +68,8 @@ function Post() {
                     <ArrowCircleUpIcon />
                     <ArrowCircleDownIcon />
                 </div>
-                <InsertCommentIcon 
-                style={{    marginLeft: "2rem"}}
+                <InsertCommentIcon
+                    style={{ marginLeft: "2rem" }}
                 />
                 <ShareIcon />
                 <div className="postFooterRight">
@@ -51,7 +92,7 @@ function Post() {
                         <div className="postInfo"
                             style={{
                                 margin: "0px 10px",
-                                flexDirection:"column"
+                                flexDirection: "column"
                             }}
                         >
                             <p>Username</p>
