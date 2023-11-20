@@ -8,11 +8,53 @@ import 'react-responsive-modal/styles.css';
 import CloseIcon from '@mui/icons-material/Close';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import SelectTopic from "./SelectTopic"
+import topics from "../json/topics.json"
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import "./css/Navbar.css"
+import axios from 'axios';
+
 function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [question, setQuestion] = useState("");
+  const [topic, setTopic] = useState("");
 
   // const [inputUrl,setInputUrl]=useState("");
+  const handleTopicChange = (event, newValue) => {
+    setTopic(newValue);
+    // console.log(newValue.title);
+  }
+
+  const options = topics.map((option) => {
+    const firstLetter = option.title[0].toUpperCase();
+    return {
+      firstLetter: /[0-9]/.test(firstLetter) ? '0-9' : firstLetter,
+      ...option,
+    };
+  });
+
+  const handleSubmit = async () => {
+    if (question !== "") {
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+      const body = {
+        questionName: question,
+        topic: topic.title
+      }
+      await axios.post('/questions', body, config)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log("Error while adding question: " + e);
+        })
+    }
+  }
   const closeIcon = <CloseIcon />;
   return (
     <div className='nav'>
@@ -63,8 +105,11 @@ function Navbar() {
             </div>
             <div className="modalField">
               <Input
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
                 type="text"
-                placeholder='ask your question here...' />
+                placeholder='ask your question here...'
+              />
               {/* <div className="inputForLink">
                 <input 
                 type="text" 
@@ -76,12 +121,42 @@ function Navbar() {
                 }
                 
               </div> */}
+
+              {/* <SelectTopic
+                style={{ marginTop: "2rem" }}
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+                onChange={handleTopicChange}
+              /> */}
+
+              {/*-------------------- Select Topic------------- */}
+              <Autocomplete
+                id="grouped-demo"
+                options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
+                groupBy={(option) => option.firstLetter}
+                getOptionLabel={(option) => option.title}
+                value={topic}
+                onChange={handleTopicChange}
+                sx={{ width: 300, marginTop: "2rem" }}
+                aria-required
+                renderInput={(params) => <TextField {...params} label="Select Topic" />}
+                renderGroup={(params) => (
+                  <li key={params.key}>
+                    <h4>{params.group}</h4>
+                    <p>{params.children}</p>
+                  </li>
+                )}
+              />
+              {/* ------------------------------------------------ */}
             </div>
             <div className="modalButtons">
               <button className='cancel' onClick={() => setIsModalOpen(false)}>
                 Cancel
               </button>
-              <button type='submit' className='askButton'>
+              <button
+                onClick={handleSubmit}
+                type='submit'
+                className='askButton'>
                 Ask Question
               </button>
             </div>

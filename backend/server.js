@@ -13,13 +13,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(`${__dirname}/../frontend/build`)))
 
-app.get("*", (req, res) => {
-    try {
-        res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`))
-    } catch (error) {
-        res.send("Oops! unexpected error")
-    }
-})
 
 //mongodb connection
 connectDb("mongodb+srv://bishalpaul34:qwerty2@cluster0.qhb870e.mongodb.net/ask-buddy?retryWrites=true&w=majority")
@@ -30,10 +23,17 @@ connectDb("mongodb+srv://bishalpaul34:qwerty2@cluster0.qhb870e.mongodb.net/ask-b
 app.use(cors());
 
 //routes
-app.use('/', staticRouter);
+// app.use('/', staticRouter);
 app.use('/questions', questionRouter);
 app.use('/answers', answerRouter);
 
+// app.get("*", (req, res) => {
+//     try {
+//         res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`))
+//     } catch (error) {
+//         res.send("Oops! unexpected error")
+//     }
+// })
 
 // server listening
 app.listen(process.env.PORT || PORT, () => {

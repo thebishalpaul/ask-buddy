@@ -242,6 +242,10 @@
     color: #222;
 }
 
+.css-1wuilmg-MuiAutocomplete-root {
+    margin-top: 1rem;
+}
+
 @media only screen and (max-width: 600px) {
     .subContent1 {
         display: none;

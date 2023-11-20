@@ -5,7 +5,7 @@ const saveQuestiontoDb = async (req, res) => {
     try {
         await questionDb.create({
             questionName: req.body.questionName,
-            questionUrl: req.body.questionUrl
+            topic: req.body.topic
         }).then(() => {
             res.status(201).send({
                 status: true,
@@ -25,11 +25,34 @@ const saveQuestiontoDb = async (req, res) => {
     }
 }
 
-const getQuestions=async (req,res)=>{
+const getQuestions = async (req, res) => {
     try {
-        
+        await questionDb
+        .aggregate([
+            {
+                $lookup: {
+                    from: "answers",
+                    localField: "_id",
+                    foreignField: "questionId",
+                    as: "allAnswersToQuestion"
+                }
+            }
+        ])
+            .exec()
+            .then((doc) => {
+                res.status(200).send(doc)
+            })
+            .catch((error) => {
+                res.status(500).send({
+                    status: false,
+                    message: "Unable to get Questions from database"
+                });
+            });
     } catch (error) {
-        
+        res.status(500).send({
+            status: false,
+            message: "Unexpected error"
+        });
     }
 }
 module.exports = {

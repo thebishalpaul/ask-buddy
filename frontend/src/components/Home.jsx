@@ -16,7 +16,6 @@ function Home() {
           {/* <Widget/> */}
         </div>
       </div>
-
     </>
   )
 }

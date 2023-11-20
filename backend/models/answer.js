@@ -1,4 +1,4 @@
-const { Mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
 const answerSchema = new mongoose.Schema({
     answer: String,
@@ -12,4 +12,4 @@ const answerSchema = new mongoose.Schema({
     },
 })
 
-module.exports = Mongoose.model("answer", answerSchema);
+module.exports = mongoose.model("answer", answerSchema);
