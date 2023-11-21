@@ -46,12 +46,15 @@ function Navbar() {
         questionName: question,
         topic: topic.title
       }
-      await axios.post('/questions', body, config)
+      await axios
+        .post('/questions', body, config)
         .then((res) => {
           console.log(res.data);
+          alert(res.data.message)
         })
         .catch((e) => {
           console.log("Error while adding question: " + e);
+          alert('Error in adding question');
         })
     }
   }

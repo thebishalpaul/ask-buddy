@@ -1,4 +1,3 @@
-// Quora named as Home this is the main page
 import React from 'react'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
@@ -11,8 +10,8 @@ function Home() {
       <div className="home">
         <Navbar />
         <div className="allComponents">
-          <Sidebar/>
-          <Feed/>
+          <Sidebar />
+          <Feed />
           {/* <Widget/> */}
         </div>
       </div>

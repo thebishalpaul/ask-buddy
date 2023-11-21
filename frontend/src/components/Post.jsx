@@ -10,11 +10,23 @@ import 'react-responsive-modal/styles.css';
 import CloseIcon from '@mui/icons-material/Close';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import ReactTimeAgo from 'react-time-ago';
 import './css/Post.css'
-function Post() {
+
+function LastSeen({ date }) {
+    return (
+        <div>
+            <ReactTimeAgo date={date}
+                locale="en-US"
+                timeStyle="twitter"
+            />
+        </div>
+    )
+}
+function Post({ eachPost }) {
     const [isAnsModalOpen, setIsAnsModalOpen] = useState(false);
     const closeIcon = <CloseIcon />;
-    var toolbarOptions = [{ 'size': ['small', false, 'large', 'huge'] },'bold', 'italic', 'link', 'image', 'underline', 'code-block', { 'list': 'ordered' }, { 'list': 'bullet' }, ];
+    var toolbarOptions = [{ 'size': ['small', false, 'large', 'huge'] }, 'bold', 'italic', 'link', 'image', 'underline', 'code-block', { 'list': 'ordered' }, { 'list': 'bullet' },];
     const module = {
         toolbar: toolbarOptions,
     }
@@ -23,12 +35,15 @@ function Post() {
             <div className="postInfo">
                 <Avatar />
                 <h4>Name</h4>
-                <small>timestamp</small>
+                <small>
+                    <LastSeen
+                        date={eachPost?.createdAt} />
+                </small>
             </div>
             <div className="postBody">
                 <div className="postQuestion">
                     <p>
-                        Question Here
+                        {eachPost?.questionName}
                     </p>
                     <button
                         className='ansBtn'
@@ -43,8 +58,8 @@ function Post() {
                         closeOnOverlayClick={false}
                     >
                         <div className="modalQuestion">
-                            <h1>Question Here</h1>
-                            <p>Asked by <span className='name'>Username</span> on <span className='name'>timestamp</span></p>
+                            <h1>{eachPost?.questionName}</h1>
+                            <p>Asked by <span className='name'>Username</span> on <span className='name'>{new Date(eachPost?.createdAt).toLocaleString()}</span></p>
                         </div>
                         <div className="modalAns">
                             <ReactQuill
@@ -83,7 +98,9 @@ function Post() {
                     fontWeight: "bold",
                     margin: "10px 0",
                 }}
-            >1 Answer(s)</p>
+            >
+              Answer {eachPost?.allAnswersToQuestion.length}
+            </p>
             <div className="postAnsDiv">
                 <div className="postAnsBox">
 
