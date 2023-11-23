@@ -12,19 +12,52 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import ReactTimeAgo from 'react-time-ago';
 import './css/Post.css'
+import axios from 'axios';
+import ReactHtmlParser from 'html-react-parser'
 
 function LastSeen({ date }) {
     return (
         <div>
             <ReactTimeAgo date={date}
                 locale="en-US"
-                timeStyle="twitter"
+                timeStyle="round"
             />
         </div>
     )
 }
 function Post({ eachPost }) {
     const [isAnsModalOpen, setIsAnsModalOpen] = useState(false);
+    const [answer, setAnswer] = useState("");
+    const [toggle, setToggle] = useState(false);
+
+    const handleQuill = (value) => {
+        setAnswer(value);
+    }
+
+    console.log(answer);
+
+    const handleSubmit = async () => {
+        if (eachPost?._id && answer !== "") {
+            const config = {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+            const body = {
+                answer: answer,
+                questionId: eachPost?._id
+            }
+            await axios.post('/answers', body, config)
+                .then((res) => {
+                    console.log(res.data);
+                    alert("Answer added successfully");
+                    window.location.href = '/'
+                })
+                .catch((error) => {
+                    console.log("Error in post ans " + error);
+                })
+        }
+    }
     const closeIcon = <CloseIcon />;
     var toolbarOptions = [{ 'size': ['small', false, 'large', 'huge'] }, 'bold', 'italic', 'link', 'image', 'underline', 'code-block', { 'list': 'ordered' }, { 'list': 'bullet' },];
     const module = {
@@ -37,7 +70,8 @@ function Post({ eachPost }) {
                 <h4>Name</h4>
                 <small>
                     <LastSeen
-                        date={eachPost?.createdAt} />
+                        date={eachPost?.createdAt}
+                    />
                 </small>
             </div>
             <div className="postBody">
@@ -65,18 +99,26 @@ function Post({ eachPost }) {
                             <ReactQuill
                                 modules={module}
                                 placeholder='Enter your answer'
+                                value={answer}
+                                onChange={handleQuill}
                             />
                         </div>
                         <div className="modalButtons">
                             <button className='cancel' onClick={() => setIsAnsModalOpen(false)}>
                                 Cancel
                             </button>
-                            <button type='submit' className='ansButton'>
+                            <button type='submit' className='ansButton'
+                                onClick={handleSubmit}
+                            >
                                 Aswere
                             </button>
                         </div>
                     </Modal>
                 </div>
+                {/* image here of post */}
+                {/* {
+                   eachPost.imageUrl && <img src="" alt="" srcset="" />
+                } */}
             </div>
             <div className="postFooter">
                 <div className="postFooterAction">
@@ -85,11 +127,12 @@ function Post({ eachPost }) {
                 </div>
                 <InsertCommentIcon
                     style={{ marginLeft: "2rem" }}
+                    onClick={() => setToggle(!toggle)}
                 />
-                <ShareIcon />
+                {/*   <ShareIcon />
                 <div className="postFooterRight">
                     <MoreHorizIcon />
-                </div>
+                </div> */}
             </div>
             <p
                 style={{
@@ -99,29 +142,38 @@ function Post({ eachPost }) {
                     margin: "10px 0",
                 }}
             >
-              Answer {eachPost?.allAnswersToQuestion.length}
+                Answer {eachPost?.allAnswersToQuestion.length}
             </p>
             <div className="postAnsDiv">
-                <div className="postAnsBox">
+                {
+                    toggle && eachPost?.allAnswersToQuestion?.map((a) => (
+                        <>
+                            <div className="postAnsBox">
+                                <div className="answeredBy">
+                                    <Avatar />
+                                    <div className="postInfo"
+                                        style={{
+                                            margin: "0px 10px",
+                                            flexDirection: "column"
+                                        }}
+                                    >
+                                        <p>Username</p>
+                                        <span>
+                                            <LastSeen
+                                                date={a?.createdAt}
+                                            />
+                                        </span>
+                                    </div>
+                                </div>
 
-                    <div className="answeredBy">
-                        <Avatar />
-                        <div className="postInfo"
-                            style={{
-                                margin: "0px 10px",
-                                flexDirection: "column"
-                            }}
-                        >
-                            <p>Username</p>
-                            <span>Timestamp</span>
-                        </div>
+                                <div className="postAns">
+                                    {ReactHtmlParser(a?.answer)}
+                                </div>
+                            </div>
+                        </>
+                    ))
+                }
 
-                    </div>
-
-                    <div className="postAns">
-                        This is test ans
-                    </div>
-                </div>
             </div>
         </div>
     )

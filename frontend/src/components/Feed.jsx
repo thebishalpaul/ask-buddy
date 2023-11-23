@@ -10,12 +10,13 @@ function Feed() {
     axios.get('/questions')
       .then((res) => {
         console.log(res.data);
-        setPosts(res.data);
+        setPosts(res.data.reverse());
       })
       .catch((error) => {
         console.log(error);
         setIsError(error.message);
       });
+ 
   }, []);
   return (
     <div className="feed">

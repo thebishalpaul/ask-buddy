@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const questionSchema = new mongoose.Schema({
     questionName: String,
-    questionUrl: String,
     topic: String,
     createdAt: {
         type: Date,
