@@ -1,10 +1,18 @@
-import './App.css';
-import Home from './components/Home';
+import React from "react";
+import "./App.css";
+//import Login from "./components/Auth/Login";
+import Home from "./components/Home";
+import { selectUser } from "./feature/userSlice";
+import { useSelector } from "react-redux";
+import Login from "./components/auth/login";
+
+
 
 function App() {
-  return (
+  const user = useSelector(selectUser)
+  return ( 
     <div className="App">
-      <Home/>
+      {user ? <Home/>:<Login/>}
     </div>
   );
 }
