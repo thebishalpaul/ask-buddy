@@ -4,15 +4,14 @@ import "./App.css";
 import Home from "./components/Home";
 import { selectUser } from "./feature/userSlice";
 import { useSelector } from "react-redux";
-import Login from "./components/auth/login";
-
-
+import Login from "./components/Auth/Login";
 
 function App() {
   const user = useSelector(selectUser)
-  return ( 
+  return (
     <div className="App">
-      {user ? <Home/>:<Login/>}
+      {console.log(user)}
+      {user ? <Home /> : <Login />}
     </div>
   );
 }
