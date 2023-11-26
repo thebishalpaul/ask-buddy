@@ -1,36 +1,36 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import Home from "./components/Home";
-import {login, selectUser } from "./feature/userSlice";
+import { login, selectUser } from "./feature/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Login from "./components/auth/Login";
+import Login from "./components/Auth/Login";
 import { onAuthStateChanged } from "firebase/auth";
-import {auth} from "./firebase";
+import { auth } from "./firebase";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
-  onAuthStateChanged(auth, (authUser) => {
-    if (authUser) {
-      dispatch(
-      login({
-       userName: authUser.displayName,
-       photo: authUser.photoURL,
-       email: authUser.email,
-       uid: authUser.uid,
-      })
-    );
-      console.log("AuthUser",authUser);
-     }
-   });
- },[dispatch]);
-  
-  return ( 
+    onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        dispatch(
+          login({
+            userName: authUser.displayName,
+            photo: authUser.photoURL,
+            email: authUser.email,
+            uid: authUser.uid,
+          })
+        );
+        console.log("AuthUser", authUser);
+      }
+    });
+  }, [dispatch]);
+
+  return (
     <div className="App">
-       {user ? <Home/>:<Login/>}
-      
+      {user ? <Home /> : <Login />}
+
     </div>
   );
 }
