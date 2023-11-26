@@ -14,11 +14,16 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import "./css/Navbar.css"
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { logout } from '../feature/userSlice';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 
 function Navbar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [topic, setTopic] = useState("");
+  const dispatch = useDispatch();
 
   // const [inputUrl,setInputUrl]=useState("");
   const handleTopicChange = (event, newValue) => {
@@ -60,6 +65,18 @@ function Navbar() {
     }
   }
   const closeIcon = <CloseIcon />;
+  const handleLogout= () => {
+    if(window.confirm("Are you sure to logout ?"))
+    {
+    signOut(auth).then(() =>{
+      dispatch(logout())
+      console.log("Logged out");
+    })
+    .catch(() => {
+      console.log("error in logout");
+    });
+   }
+  };
   return (
     <div className='nav'>
       <div className="content">
@@ -78,11 +95,11 @@ function Navbar() {
 
         <div className="subContent2">
           <div className="dp">
-            <Avatar
+            <span onClick = {handleLogout}><Avatar
               alt="Remy Sharp"
               src="/static/images/avatar/1.jpg"
-              sx={{ width: 56, height: 56 }}
-            />
+              sx={{ width: 56, height: 56 }}/>
+            </span>
           </div>
           <Button variant="contained" sx={{ background: "black" }}
             onClick={() => setIsModalOpen(true)}

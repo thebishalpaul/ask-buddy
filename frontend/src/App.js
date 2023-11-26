@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./components/Home";
 import { login, selectUser } from "./feature/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import Login from "./components/Auth/Login";
+import Login from "./components/auth/Login";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 
