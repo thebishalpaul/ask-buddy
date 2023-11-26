@@ -101,11 +101,11 @@ function Navbar() {
             </div>
             <div className="modalInfo">
               <Avatar className='avatar' />
-              <div className="modalScope">
+              {/* <div className="modalScope">
                 <PeopleAltIcon />
                 <p>Public</p>
                 <ExpandMoreIcon />
-              </div>
+              </div> */}
             </div>
             <div className="modalField">
               <Input
@@ -114,24 +114,6 @@ function Navbar() {
                 type="text"
                 placeholder='ask your question here...'
               />
-              {/* <div className="inputForLink">
-                <input 
-                type="text" 
-                value={inputUrl}
-                onChange={(e)=>setInputUrl(e.target.value)}
-                placeholder='Optional: include a link that give context' />
-                {
-                  inputUrl!=="" && <img src={inputUrl} alt="urlImage" />
-                }
-                
-              </div> */}
-
-              {/* <SelectTopic
-                style={{ marginTop: "2rem" }}
-                value={topic}
-                onChange={(e) => setTopic(e.target.value)}
-                onChange={handleTopicChange}
-              /> */}
 
               {/*-------------------- Select Topic------------- */}
               <Autocomplete
@@ -152,6 +134,7 @@ function Navbar() {
                 )}
               />
               {/* ------------------------------------------------ */}
+              
             </div>
             <div className="modalButtons">
               <button className='cancel' onClick={() => setIsModalOpen(false)}>
