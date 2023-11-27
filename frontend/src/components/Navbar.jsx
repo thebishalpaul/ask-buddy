@@ -50,7 +50,8 @@ function Navbar() {
       }
       const body = {
         questionName: question,
-        topic: topic.title
+        topic: topic.title,
+        user: user
       }
       await axios
         .post('/questions', body, config)
@@ -104,7 +105,12 @@ function Navbar() {
             </span>
           </div>
           <Button variant="contained" sx={{ background: "black" }}
-            onClick={() => setIsModalOpen(true)}
+            onClick={
+              (e) => {
+                e.preventDefault();
+                setIsModalOpen(true)
+              }
+            }
           >Ask Question</Button>
           <Modal
             open={isModalOpen}

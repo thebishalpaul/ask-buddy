@@ -50,8 +50,7 @@ function Post({ eachPost }) {
             const body = {
                 answer: answer,
                 questionId: eachPost?._id,
-                user:user,
-
+                user: user,
             }
             await axios.post('/answers', body, config)
                 .then((res) => {
@@ -72,7 +71,7 @@ function Post({ eachPost }) {
     return (
         <div className="post">
             <div className="postInfo">
-                <Avatar src={eachPost?.user?.photo}/>
+                <Avatar src={eachPost?.user?.photo} />
                 <h4>{eachPost?.user?.userName}</h4>
                 <small>
                     <LastSeen
@@ -135,10 +134,6 @@ function Post({ eachPost }) {
                     style={{ marginLeft: "2rem" }}
                     onClick={() => setToggle(!toggle)}
                 />
-                {/*   <ShareIcon />
-                <div className="postFooterRight">
-                    <MoreHorizIcon />
-                </div> */}
             </div>
             <p
                 style={{
@@ -156,13 +151,13 @@ function Post({ eachPost }) {
                         <>
                             <div className="postAnsBox">
                                 <div className="answeredBy">
-                                    <Avatar src = {a?.user?.photo} />
+                                    <Avatar src={a?.user?.photo} />
                                     <div className="postInfo"
                                         style={{
                                             margin: "0px 10px",
-                                            flexDirection: "column" 
+                                            flexDirection: "column"
                                         }}
-                                    >
+                                     >
                                         <p>{a.user?.userName}</p>
                                         <span>
                                             <LastSeen
