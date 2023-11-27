@@ -122,8 +122,10 @@ function Post({ eachPost }) {
             </div>
             <div className="postFooter">
                 <div className="postFooterAction">
-                    <ArrowCircleUpIcon />
+                    <ArrowCircleUpIcon/>
+                    <p>4</p>
                     <ArrowCircleDownIcon />
+                    <p>5</p>
                 </div>
                 <InsertCommentIcon
                     style={{ marginLeft: "2rem" }}

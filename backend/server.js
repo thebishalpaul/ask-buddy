@@ -3,10 +3,11 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { connectDb } = require('./conn');
-const PORT = 3000;
+const PORT = 3001;
 const questionRouter = require("./router/question");
 const answerRouter = require("./router/answer");
 const staticRouter = require("./router/staticRouter");
+
 
 //midlleware
 app.use(express.json());
