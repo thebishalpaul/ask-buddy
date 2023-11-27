@@ -4,7 +4,8 @@ const saveAns = async (req, res) => {
     try {
         await answerDb.create({
             answer: req.body.answer,
-            questionId: req.body.questionId
+            questionId: req.body.questionId,
+            user: req.body.user
         })
             .then(() => {
                 res.status(200).send({

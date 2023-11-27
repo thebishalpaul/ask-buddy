@@ -14,6 +14,8 @@ import ReactTimeAgo from 'react-time-ago';
 import './css/Post.css'
 import axios from 'axios';
 import ReactHtmlParser from 'html-react-parser'
+import { useSelector } from 'react-redux';
+import { selectUser } from '../feature/userSlice';
 
 function LastSeen({ date }) {
     return (
@@ -30,6 +32,8 @@ function Post({ eachPost }) {
     const [answer, setAnswer] = useState("");
     const [toggle, setToggle] = useState(false);
 
+    const user = useSelector(selectUser);
+
     const handleQuill = (value) => {
         setAnswer(value);
     }
@@ -45,7 +49,8 @@ function Post({ eachPost }) {
             }
             const body = {
                 answer: answer,
-                questionId: eachPost?._id
+                questionId: eachPost?._id,
+                user: user,
             }
             await axios.post('/answers', body, config)
                 .then((res) => {
@@ -66,8 +71,8 @@ function Post({ eachPost }) {
     return (
         <div className="post">
             <div className="postInfo">
-                <Avatar />
-                <h4>Name</h4>
+                <Avatar src={eachPost?.user?.photo} />
+                <h4>{eachPost?.user?.userName}</h4>
                 <small>
                     <LastSeen
                         date={eachPost?.createdAt}
@@ -93,7 +98,7 @@ function Post({ eachPost }) {
                     >
                         <div className="modalQuestion">
                             <h1>{eachPost?.questionName}</h1>
-                            <p>Asked by <span className='name'>Username</span> on <span className='name'>{new Date(eachPost?.createdAt).toLocaleString()}</span></p>
+                            <p>Asked by <span className='name'>{eachPost?.user?.userName}</span> on <span className='name'>{new Date(eachPost?.createdAt).toLocaleString()}</span></p>
                         </div>
                         <div className="modalAns">
                             <ReactQuill
@@ -110,7 +115,7 @@ function Post({ eachPost }) {
                             <button type='submit' className='ansButton'
                                 onClick={handleSubmit}
                             >
-                                Aswere
+                                Answer
                             </button>
                         </div>
                     </Modal>
@@ -129,10 +134,6 @@ function Post({ eachPost }) {
                     style={{ marginLeft: "2rem" }}
                     onClick={() => setToggle(!toggle)}
                 />
-                {/*   <ShareIcon />
-                <div className="postFooterRight">
-                    <MoreHorizIcon />
-                </div> */}
             </div>
             <p
                 style={{
@@ -150,14 +151,14 @@ function Post({ eachPost }) {
                         <>
                             <div className="postAnsBox">
                                 <div className="answeredBy">
-                                    <Avatar />
+                                    <Avatar src={a?.user?.photo} />
                                     <div className="postInfo"
                                         style={{
                                             margin: "0px 10px",
                                             flexDirection: "column"
                                         }}
                                     >
-                                        <p>Username</p>
+                                        <p>{a.user?.userName}</p>
                                         <span>
                                             <LastSeen
                                                 date={a?.createdAt}

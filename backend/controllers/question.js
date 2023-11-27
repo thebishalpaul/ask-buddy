@@ -5,7 +5,8 @@ const saveQuestiontoDb = async (req, res) => {
     try {
         await questionDb.create({
             questionName: req.body.questionName,
-            topic: req.body.topic
+            topic: req.body.topic,
+            user: req.body.user
         }).then(() => {
             res.status(201).send({
                 status: true,
@@ -28,16 +29,16 @@ const saveQuestiontoDb = async (req, res) => {
 const getQuestions = async (req, res) => {
     try {
         await questionDb
-        .aggregate([
-            {
-                $lookup: {
-                    from: "answers",
-                    localField: "_id",
-                    foreignField: "questionId",
-                    as: "allAnswersToQuestion"
+            .aggregate([
+                {
+                    $lookup: {
+                        from: "answers",
+                        localField: "_id",
+                        foreignField: "questionId",
+                        as: "allAnswersToQuestion"
+                    }
                 }
-            }
-        ])
+            ])
             .exec()
             .then((doc) => {
                 res.status(200).send(doc)
