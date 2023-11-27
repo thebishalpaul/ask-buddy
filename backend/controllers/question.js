@@ -55,7 +55,11 @@ const getQuestions = async (req, res) => {
         });
     }
 }
+const voteCount=async(req,res)=>{
+    
+}
 module.exports = {
     saveQuestiontoDb,
-    getQuestions
+    getQuestions,
+    voteCount
 }

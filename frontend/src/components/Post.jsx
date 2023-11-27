@@ -34,7 +34,7 @@ function Post({ eachPost }) {
         setAnswer(value);
     }
 
-    console.log(answer);
+    // console.log(answer);
 
     const handleSubmit = async () => {
         if (eachPost?._id && answer !== "") {
