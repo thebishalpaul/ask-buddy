@@ -14,8 +14,8 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import "./css/Navbar.css"
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { logout } from '../feature/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout,selectUser } from '../feature/userSlice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -24,6 +24,7 @@ function Navbar() {
   const [question, setQuestion] = useState("");
   const [topic, setTopic] = useState("");
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   // const [inputUrl,setInputUrl]=useState("");
   const handleTopicChange = (event, newValue) => {
@@ -95,9 +96,10 @@ function Navbar() {
 
         <div className="subContent2">
           <div className="dp">
-            <span onClick = {handleLogout}><Avatar
+            <span onClick = {handleLogout}> 
+            <Avatar 
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={user?.photo}
               sx={{ width: 56, height: 56 }}/>
             </span>
           </div>
@@ -117,7 +119,7 @@ function Navbar() {
               {/* <h5>Share Link</h5> */}
             </div>
             <div className="modalInfo">
-              <Avatar className='avatar' />
+              <Avatar src={user?.photo} className='avatar' />
               <div className="modalScope">
                 <PeopleAltIcon />
                 <p>Public</p>
