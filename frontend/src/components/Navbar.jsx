@@ -1,4 +1,3 @@
-//Header named as Navbar
 import React, { useState } from 'react'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
@@ -6,9 +5,6 @@ import { Avatar, Button, Input } from '@mui/material';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import CloseIcon from '@mui/icons-material/Close';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import SelectTopic from "./SelectTopic"
 import topics from "../json/topics.json"
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -26,7 +22,6 @@ function Navbar() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  // const [inputUrl,setInputUrl]=useState("");
   const handleTopicChange = (event, newValue) => {
     setTopic(newValue);
     // console.log(newValue.title);

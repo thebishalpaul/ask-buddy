@@ -1,6 +1,4 @@
 import { Avatar } from '@mui/material'
-import ShareIcon from '@mui/icons-material/Share';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import InsertCommentIcon from '@mui/icons-material/InsertComment';
