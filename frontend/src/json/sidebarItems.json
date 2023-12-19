@@ -1,0 +1,119 @@
+[
+    {
+        "title": "First Semester",
+        "childrens": [
+            {
+                "title": "Operating System",
+                "icon": "https://media.istockphoto.com/id/1130990010/photo/os-on-digital-interface-and-blue-network-background.jpg?s=612x612&w=0&k=20&c=ynl8kReC-uqWrnAlD4dBapPWhjTs3yVt0bQmo5ANPGI=",
+                "path": "/"
+            },
+            {
+                "title": "Data Structure Analysis and Algorithm",
+                "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTynrKKzU_tnJej0ITvUgpRrwU8ym4OgQBhxAKv-0tnL2X9NWbGuu2Ggz7_hz3ULX5LE2A&usqp=CAU",
+                "path": "/about"
+            },
+            {
+                "title": "Java",
+                "icon": "https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/0a/8cd7f1b14344618b75142593bc7af8/JavaCupLogo800x800.png?auto=format%2Ccompress&dpr=1",
+                "path": "/about"
+            },
+            {
+                "title": "DBMS",
+                "icon": "https://play-lh.googleusercontent.com/erU9Hj8_nNsWnyJgFks0p0jdpu769mbv10SjH45JnZshNV_eEITl3RBeqPgCfKtD0Ghd"
+            },
+            {
+                "title": "LAB",
+                "icon":"https://cdn.labmanager.com/assets/articleNo/30886/aImg/55297/sept23-safety-industrial-hygiene-1800x900-s.jpg",
+                "path": "/reset-password"
+            }
+        ]
+    },
+    {
+        "title": "Second Semester",
+        "icon": "bi-info-circle-fill",
+        "childrens": [
+            {
+                "title": "Advance Data Structure",
+                "path": "/login",
+                "icon": "https://i0.wp.com/studymuch.in/wp-content/uploads/2023/04/Data-Structure-and-Algorithm.png?fit=984%2C984&ssl=1"
+            },
+            {
+                "title": "Distributed Systems",
+                "path": "/register",
+                "icon": "https://logicmojo.com/assets/dist/new_pages/images/distributed-system.png"
+            },
+            {
+                "title": "Computer Networks",
+                "path": "/forgot-password",
+                "icon":"https://media.geeksforgeeks.org/wp-content/uploads/20230406152358/CN-(1).jpg"
+            },
+            {
+                "title": "Software Engineering",
+                "path": "/reset-password",
+                "icon":"https://www.computerhope.com/jargon/s/software-engineering.png"
+            },
+            {
+                "title": "Theory of Computation",
+                "path": "/reset-password",
+                "icon":"https://edurev.gumlet.io/AllImages/original/ApplicationImages/CourseImages/27ddebfb-99cc-4a54-991c-74706241a3b6_CI.png"
+            }
+        ]
+    },
+    {
+        "title": "Third Semester",
+        "icon": "bi-person-fill",
+        "childrens": [
+            {
+                "title": "Advance CA",
+                "path": "/profile",
+                "icon":"https://www.sigarch.org/wp-content/uploads/2017/03/Welcome-1080x675.jpg"
+            },
+            {
+                "title": "Artificial Intelligence",
+                "path": "/profile",
+                "icon":"https://www.simplilearn.com/ice9/free_resources_article_thumb/Advantages_and_Disadvantages_of_artificial_intelligence.jpg"
+            },
+            {
+                "title": "Embedded System",
+                "path": "/settings/notifications",
+                "icon":"https://cdn.fordhamram.com/wp-content/uploads/Best-Online-Embedded-Systems-Courses-Certificates.jpg"
+            },
+            {
+                "title": "Introduction to Data Science",
+                "path": "/settings/notifications",
+                "icon":"https://d1m75rqqgidzqn.cloudfront.net/wp-data/2019/09/11134058/What-is-data-science-2.jpg"
+            },
+            {
+                "title": "Web Technology",
+                "path": "/settings/notifications",
+                "icon":"https://cdn.eternalorganizer.com/wp-content/uploads/2017/09/04204517/Web.png"
+            }
+        ]
+    },
+    {
+        "title": "Fourth Semester",
+        "icon": "bi-view-list",
+        "childrens": [
+            {
+                "title": "NPTEL Course",
+                "path": "/search",
+                "icon":"https://assets.thehansindia.com/h-upload/2021/01/20/1600x960_1025790-nptel.jpg"
+            },
+            {
+                "title": "Project",
+                "path": "/history",
+                "icon":"https://builtin.com/cdn-cgi/image/f=auto,quality=80,width=752,height=435/https://builtin.com/sites/www.builtin.com/files/styles/byline_image/public/2022-11/data-science-projects.jpg"
+            }
+        ]
+    },
+    {
+        "title": "Scholarship",
+        "icon": "https://www.wemakescholars.com/uploads/blog/tips-to-maximize-your-chance-of-winning-an-International-Scholarship.webp",
+        "path": "/support"
+    },
+    {
+        "title": "Placements",
+        "icon": "https://www.brainwareuniversity.ac.in/images/career-employbility.jpg",
+        "path": "/report-bug"
+    }
+]

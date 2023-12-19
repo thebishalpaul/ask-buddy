@@ -1,0 +1,239 @@
+.post {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    margin-top: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    /* max-width: 700px; */
+    box-shadow: 0px 5px 8px -9px solid rgab(0, 0, 0, 0.5);
+}
+
+.postInfo {
+    display: flex;
+    align-items: center;
+}
+
+.postInfo>h4 {
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.postInfo>h4:hover {
+    text-decoration: underline;
+}
+
+.postInfo>small {
+    margin-left: 10px;
+}
+
+.postBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.postBody>.postQuestion {
+    margin-top: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.postQuestion>.ansBtn {
+    margin-left: auto;
+    cursor: pointer;
+    padding: 7px;
+    background-color: #222;
+    outline: none;
+    border: none;
+    color: lightgray;
+    font-weight: 300;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-right: 3rem;
+}
+
+.ansBtn:hover {
+    color: #222;
+    background: lightgray;
+}
+
+.postQuestion>p:hover {
+    text-decoration: underline;
+}
+
+/* .postBody > .post__answer > p {
+    margin-bottom: 10px;
+  } */
+
+/* .post__image {
+    background: rgb(0, 140, 255);
+  } */
+
+.postBody>img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.postFooter {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.postFooter>.MuiSvgIcon-root {
+    color: gray;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.postFooterAction {
+    background-color: lightgray;
+    padding: 5px;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 33px;
+}
+
+.postFooterAction>.MuiSvgIcon-root {
+    color: gray;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.postFooterAction>.MuiSvgIcon-root:hover {
+    color: rgb(0, 140, 255);
+    margin-right: 40px;
+}
+
+.postFooterLeft {
+    margin-left: auto;
+}
+
+.postFooterLeft>.MuiSvgIcon-root {
+    color: gray;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+.postAnsDiv {
+    margin: 5px 0px 0px 0px;
+    padding: 5px 0px 0px 0px;
+    border-top: 1px solid lightgray;
+}
+
+.postAnsBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 5px;
+    border-top: 1px solid lightgray;
+}
+
+.answeredBy {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+}
+
+.modalQuestion {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.modalQuestion>h1 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.modalQuestion>p {
+    color: gray;
+    font-size: small;
+}
+
+.modalQuestion>p>.name {
+    color: black;
+    font-weight: bold;
+}
+
+.modalAns {
+    display: flex;
+    padding-top: 20px;
+    flex: 1;
+}
+
+.modalAns>textarea {
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    font-size: 15px;
+    color: black;
+}
+
+.modalButtons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.modalButtons>.cancle {
+    border: none;
+    margin-top: 10px;
+    outline: none;
+    color: gray;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 33px;
+    cursor: pointer;
+}
+
+.modalButtons>.cancle:hover {
+    color: red;
+}
+
+.modalButtons>.ansButton {
+    border: none;
+    outline: none;
+    margin-top: 5px;
+    background-color: #222;
+    color: white;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 33px;
+    cursor: pointer;
+    width: 50%;
+}
+
+.modalButtons>.ansButton:hover {
+    background-color: #eee;
+    color: #222;
+}
+
+.react-responsive-modal-modal {
+    /* width: 600px; */
+    height: 400px;
+}
+
+.quill {
+    width: 100%;
+    height: 120px;
+}
