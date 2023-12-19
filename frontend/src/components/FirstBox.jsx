@@ -6,10 +6,10 @@ import {useSelector } from 'react-redux/es/hooks/useSelector';
 
 
 
-function FirstBox() {
+function FirstBox({setIsModalOpen}) {
     const user = useSelector(selectUser);
     return (
-        <div className="mainBox">
+        <div className="mainBox" onClick={(e)=>setIsModalOpen(true)}>
             <div className="boxAvatar">
                 <Avatar 
                  src={user?.photo}/>

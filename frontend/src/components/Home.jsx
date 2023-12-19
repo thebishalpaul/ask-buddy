@@ -9,6 +9,7 @@ function Home() {
   const [posts, setPosts] = useState([]);
   const [searchInput, setSearchInput] = useState([]);
   const [isError, setIsError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useEffect(() => {
     axios.get('/questions')
       .then((res) => {
@@ -29,12 +30,15 @@ function Home() {
         <Navbar
           setSearchInput={setSearchInput}
           posts={posts}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
         <div className="allComponents">
           <Sidebar />
           <Feed
             isError={isError}
             searchInput={searchInput}
+            setIsModalOpen={setIsModalOpen}
           />
         </div>
       </div>

@@ -15,8 +15,8 @@ import { logout, selectUser } from '../feature/userSlice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 
-function Navbar({ setSearchInput, posts }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function Navbar({ setSearchInput, posts, isModalOpen,setIsModalOpen }) {
+  
   const [question, setQuestion] = useState("");
   const [topic, setTopic] = useState("");
   const dispatch = useDispatch();
