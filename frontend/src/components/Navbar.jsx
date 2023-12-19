@@ -11,11 +11,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 import "./css/Navbar.css"
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout,selectUser } from '../feature/userSlice';
+import { logout, selectUser } from '../feature/userSlice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 
-function Navbar() {
+function Navbar({ setSearchInput, posts }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [topic, setTopic] = useState("");
@@ -61,19 +61,27 @@ function Navbar() {
         })
     }
   }
+
   const closeIcon = <CloseIcon />;
-  const handleLogout= () => {
-    if(window.confirm("Are you sure to logout ?"))
-    {
-    signOut(auth).then(() =>{
-      dispatch(logout())
-      console.log("Logged out");
-    })
-    .catch(() => {
-      console.log("error in logout");
-    });
-   }
+  const handleLogout = () => {
+    if (window.confirm("Are you sure to logout ?")) {
+      signOut(auth).then(() => {
+        dispatch(logout())
+        console.log("Logged out");
+      })
+        .catch(() => {
+          console.log("error in logout");
+        });
+    }
   };
+ 
+
+
+
+  const filter = (e) => {
+    setSearchInput(posts.filter(f => f.questionName.toLowerCase().includes(e.target.value.toLowerCase())))
+  }
+
   return (
     <div className='nav'>
       <div className="content">
@@ -86,17 +94,19 @@ function Navbar() {
           </div>
           <div className="searchBar">
             <SearchIcon />
-            <input type="text" name="" id="" placeholder='Search Questions' />
+            <input type="text" name="" id="" placeholder='Search Questions'
+              onChange={filter}
+            />
           </div>
         </div>
 
         <div className="subContent2">
           <div className="dp">
-            <span onClick = {handleLogout}> 
-            <Avatar 
-              alt="Remy Sharp"
-              src={user?.photo}
-              sx={{ width: 56, height: 56 }}/>
+            <span onClick={handleLogout}>
+              <Avatar
+                alt="Remy Sharp"
+                src={user?.photo}
+                sx={{ width: 56, height: 56 }} />
             </span>
           </div>
           <Button variant="contained" sx={{ background: "black" }}
@@ -149,7 +159,7 @@ function Navbar() {
                 )}
               />
               {/* ------------------------------------------------ */}
-              
+
             </div>
             <div className="modalButtons">
               <button className='cancel' onClick={() => setIsModalOpen(false)}>
