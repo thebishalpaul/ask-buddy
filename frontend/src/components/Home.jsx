@@ -34,7 +34,10 @@ function Home() {
           setIsModalOpen={setIsModalOpen}
         />
         <div className="allComponents">
-          <Sidebar />
+          <Sidebar
+            setSearchInput={setSearchInput}
+            posts={posts}
+          />
           <Feed
             isError={isError}
             searchInput={searchInput}

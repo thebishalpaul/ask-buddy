@@ -2,8 +2,7 @@ import topics from "../json/topics.json"
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useState } from "react";
-// import { useEffect } from "react-usestateref";
+
 
 
 export default function SelectTopic() {

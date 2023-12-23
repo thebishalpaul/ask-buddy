@@ -15,8 +15,8 @@ import { logout, selectUser } from '../feature/userSlice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 
-function Navbar({ setSearchInput, posts, isModalOpen,setIsModalOpen }) {
-  
+function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
+
   const [question, setQuestion] = useState("");
   const [topic, setTopic] = useState("");
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ function Navbar({ setSearchInput, posts, isModalOpen,setIsModalOpen }) {
         });
     }
   };
- 
+
 
 
 
@@ -146,11 +146,12 @@ function Navbar({ setSearchInput, posts, isModalOpen,setIsModalOpen }) {
                 options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
                 groupBy={(option) => option.firstLetter}
                 getOptionLabel={(option) => option.title}
-                value={topic}
                 onChange={handleTopicChange}
+                value={topic}
                 sx={{ width: 300, marginTop: "2rem" }}
                 aria-required
-                renderInput={(params) => <TextField {...params} label="Select Topic" />}
+                renderInput={(params) =>
+                  <TextField {...params} label="Select Topic" />}
                 renderGroup={(params) => (
                   <li key={params.key}>
                     <h4>{params.group}</h4>

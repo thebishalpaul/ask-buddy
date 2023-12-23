@@ -3,12 +3,12 @@ import FirstBox from './FirstBox'
 import "./css/Feed.css"
 import Post from './Post'
 
-function Feed({isError,searchInput, setIsModalOpen}) {
-  
+function Feed({ isError, searchInput, setIsModalOpen }) {
+
   return (
     <div className="feed">
-      <FirstBox 
-      setIsModalOpen={setIsModalOpen}
+      <FirstBox
+        setIsModalOpen={setIsModalOpen}
       />
       {isError && <h2 className='error'>{isError}</h2>}
       {

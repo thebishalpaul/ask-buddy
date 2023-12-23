@@ -3,8 +3,25 @@ import "./css/SidebarOptions.css"
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useState } from "react"
 
-function SidebarOptions({ item }) {
-    const [open, setOpen] = useState(false)
+function SidebarOptions({ item, setSearchInput, posts }) {
+    const [open, setOpen] = useState(false);
+    const [selectedTitle, setSelectedTitle] = useState("");
+
+
+    const selectFun = (e) => {
+        const clickedTopic = e.target.textContent;
+        setSelectedTitle(clickedTopic);
+    }
+
+    const filter = (e) => {
+        e.preventDefault();
+        // selectFun();
+        console.log("sidebar: " + posts);
+        setSearchInput(posts.filter(f => f.topic.includes(e.target.textContent)));
+        console.log(e.target.textContent);
+    }
+    // filter();
+    // console.log(selectedTitle);
 
     if (item.childrens) {
         return (
@@ -21,7 +38,17 @@ function SidebarOptions({ item }) {
 
                 {/* Sub Menu */}
                 <div className="sidebar-content">
-                    {item.childrens.map((child, index) => <SidebarOptions key={index} item={child} />)}
+                    {
+                        item.childrens.map(
+                            (child, index) =>
+                                <SidebarOptions
+                                    key={index}
+                                    item={child}
+                                    posts={posts}
+                                    setSearchInput={setSearchInput}
+                                />
+                        )
+                    }
                 </div>
             </div>
         )
@@ -29,9 +56,9 @@ function SidebarOptions({ item }) {
         return (
             <div className="sidebarItem">
                 {item.icon && <img src={item.icon} alt='' height={50} width={60} />}
-                <a href={item.path || "#"} className="sidebar-item plain">
+                <div className="sidebar-item plain" onClick={filter}>
                     {item.title}
-                </a>
+                </div>
             </div>
         )
     }

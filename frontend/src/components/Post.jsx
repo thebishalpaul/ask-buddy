@@ -25,6 +25,7 @@ function LastSeen({ date }) {
         </div>
     )
 }
+
 function Post({ eachPost }) {
     const [isAnsModalOpen, setIsAnsModalOpen] = useState(false);
     const [answer, setAnswer] = useState("");
