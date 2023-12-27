@@ -6,6 +6,7 @@ const { connectDb } = require('./conn');
 const PORT = 3000;
 const questionRouter = require("./router/question");
 const answerRouter = require("./router/answer");
+const signupRouter = require("./router/signup");
 const staticRouter = require("./router/staticRouter");
 
 //midlleware
@@ -26,11 +27,11 @@ app.use(cors());
 // app.use('/', staticRouter);
 app.use('/questions', questionRouter);
 app.use('/answers', answerRouter);
+app.use("/signup",signupRouter);
 
 app.get("*", (req, res) => {
     try {
         res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`))
-        // res.sendFile(path.join(`${__dirname}/../frontend`))
     } catch (error) {
         res.send("Oops! unexpected error")
     }

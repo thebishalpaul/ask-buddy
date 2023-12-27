@@ -35,7 +35,8 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
     };
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (question !== "") {
 
       const config = {
@@ -76,8 +77,6 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
   };
 
 
-
-
   const filter = (e) => {
     setSearchInput(posts.filter(f => f.questionName.toLowerCase().includes(e.target.value.toLowerCase())))
   }
@@ -90,7 +89,13 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
         </div>
         <div className="subContent1">
           <div className="navIcons">
-            <HomeIcon />
+            <a href="/"
+              style={{ color: "black" }}
+            >
+              <HomeIcon
+                sx={{ width: 33, height: 33 }}
+              />
+            </a>
           </div>
           <div className="searchBar">
             <SearchIcon />
