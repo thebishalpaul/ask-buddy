@@ -90,7 +90,13 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
         </div>
         <div className="subContent1">
           <div className="navIcons">
-            <HomeIcon />
+            <a href="/"
+              style={{ color: "black" }}
+            >
+              <HomeIcon
+                sx={{ width: 33, height: 33 }}
+              />
+            </a>
           </div>
           <div className="searchBar">
             <SearchIcon />
