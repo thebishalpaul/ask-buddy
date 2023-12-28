@@ -20,5 +20,5 @@ const userDetailsSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
-// userDetailsSchema.pre('save',async function(next))
+
 module.exports = mongoose.model("user", userDetailsSchema);

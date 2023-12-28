@@ -292,7 +292,7 @@ function LoginForm() {
       }
       setLoading(true);
       await axios
-        .post('/login', body, config)
+        .get('/login', body, config)
         .then((res) => {
           console.log("login axios msg: ");
           console.log(res.data);
