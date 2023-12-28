@@ -13,7 +13,7 @@ function AboutUs() {
                     <p class="text-blk subHeading">
 
 
-                        The AskBuddy project aims to introduce a dedicated doubt-clearing system within Assam Engineering College.
+                        The AskBuddy aims to introduce a dedicated doubt-clearing system within Assam Engineering College.
                         <br />
                         AskBuddy strives to create a centralized platform where students can confidently seek clarification on diverse subjects and academic matters. This consolidation of resources aims to streamline the learning process and enhance students' understanding of their coursework.
 
