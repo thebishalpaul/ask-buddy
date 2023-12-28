@@ -14,6 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout, selectUser } from '../feature/userSlice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
+import { Link } from "react-router-dom";
+
 
 function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
 
@@ -77,7 +79,6 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
 
 
 
-
   const filter = (e) => {
     setSearchInput(posts.filter(f => f.questionName.toLowerCase().includes(e.target.value.toLowerCase())))
   }
@@ -92,11 +93,14 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
           <div className="navIcons">
             <a href="/"
               style={{ color: "black" }}
-            >
+            >  
               <HomeIcon
                 sx={{ width: 33, height: 33 }}
               />
             </a>
+          </div>
+          <div className="aboutUs">
+            <Link to="/aboutUs">About Us</Link>
           </div>
           <div className="searchBar">
             <SearchIcon />

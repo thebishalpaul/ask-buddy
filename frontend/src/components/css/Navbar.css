@@ -53,6 +53,9 @@
     cursor: pointer;
 }
 
+.navIcons a{
+    color: #000;
+}
 
 .navIcons:hover {
     background-color: #eee;
@@ -244,6 +247,15 @@
 
 .css-1wuilmg-MuiAutocomplete-root {
     margin-top: 1rem;
+}
+
+.aboutUs {
+    margin-left: 4rem;
+}
+
+.aboutUs a {
+    color: black;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {

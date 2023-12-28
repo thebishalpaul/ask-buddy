@@ -3,11 +3,11 @@
     flex: 0.2;
   } */
 
-  .sidebar{
-    width: 331px;
-    flex-shrink: 0;
-    /* background-color: rgba(22, 22, 22, 1); */
-    height: 100%;
-    overflow: auto;
-  }
-  
+.sidebar {
+  width: 331px;
+  flex-shrink: 0;
+  /* background-color: rgba(22, 22, 22, 1); */
+  height: 100%;
+  overflow: auto;
+  font-family: 'Kalnia', serif;
+}
