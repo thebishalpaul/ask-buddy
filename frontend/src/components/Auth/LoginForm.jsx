@@ -243,8 +243,12 @@ function LoginForm() {
   const [user, setUser] = useState({
     fullName: "",
     email: "",
-    password: ""
+    password: "",
+    pic: ""
   });
+
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -257,8 +261,10 @@ function LoginForm() {
     const body = {
       fullName: user.fullName,
       email: user.email,
-      password: user.password
+      password: user.password,
+      pic: user.pic
     }
+
     await axios
       .post('/signup', body, config)
       .then((res) => {
@@ -269,6 +275,36 @@ function LoginForm() {
         console.log("Error while adding user: " + error);
         alert('Error in adding user');
       })
+  }
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+      const body = {
+        email: user.email,
+        password: user.password,
+      }
+      setLoading(true);
+      await axios
+        .post('/login', body, config)
+        .then((res) => {
+          console.log("login axios msg: ");
+          console.log(res.data);
+        })
+      // .catch((error) => {
+      //   console.log("Error while login: " + error);
+      //   alert('Error in login');
+      // })
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+    }
   }
   return (
     <>
@@ -285,15 +321,27 @@ function LoginForm() {
             name="email"
             id="emailId"
             placeholder="Email"
+            onChange={(e) => {
+              setUser({
+                ...user,
+                email: e.target.value
+              });
+            }}
           />
           <Input
             type="password"
             name="password"
             id="passwordId"
             placeholder="Password"
+            onChange={(e) => {
+              setUser({
+                ...user,
+                password: e.target.value
+              });
+            }}
           />
           <Link href="#">Forgot Your Password?</Link>
-          <Button>Sign In</Button>
+          <Button onClick={handleLogin}>Sign In</Button>
         </Form>
 
         {/* ------------------------------SIGNUP---------------------------------- */}
@@ -334,6 +382,18 @@ function LoginForm() {
               setUser({
                 ...user,
                 password: e.target.value
+              });
+            }}
+          />
+          <Input
+            type="file"
+            name="pic"
+            id="pic"
+            placeholder="Upload Picture"
+            onChange={(e) => {
+              setUser({
+                ...user,
+                pic: e.target.value
               });
             }}
           />

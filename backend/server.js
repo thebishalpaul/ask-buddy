@@ -7,6 +7,7 @@ const PORT = 3000;
 const questionRouter = require("./router/question");
 const answerRouter = require("./router/answer");
 const signupRouter = require("./router/signup");
+const loginRouter = require("./router/login");
 const staticRouter = require("./router/staticRouter");
 
 //midlleware
@@ -28,6 +29,7 @@ app.use(cors());
 app.use('/questions', questionRouter);
 app.use('/answers', answerRouter);
 app.use("/signup",signupRouter);
+app.use("/login",loginRouter);
 
 app.get("*", (req, res) => {
     try {

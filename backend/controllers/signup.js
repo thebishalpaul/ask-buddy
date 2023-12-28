@@ -1,21 +1,23 @@
 const user = require('../models/userDetails');
+const bcrypt = require('bcryptjs');
 
 const saveUserDetails = async (req, res) => {
-    const email=req.body.email;
-    console.log("req is: " + req);
+    const { fullName, email, password, pic } = req.body;
+    const isUserPresent = await user.findOne({ email });
+    const encryptedPassword = await bcrypt.hash(password, 10);
+    if (isUserPresent) {
+        res.status(400).send({
+            status: false,
+            message: "User Already Exist !!"
+        })
+        return;
+    }
     try {
-        // const isUserPresent = await user.findOne({email});
-        
-        // if (isUserPresent) {
-        //     res.status(400).send({
-        //         status: false,
-        //         message: "User Already Exist !!"
-        //     })
-        // }
         await user.create({
-            fullname: req.body.fullname,
-            email: req.body.email,
-            password: req.body.password
+            fullName,
+            email,
+            password: encryptedPassword,
+            pic
         }).then(() => {
             res.status(201).send({
                 status: true,
