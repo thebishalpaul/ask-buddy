@@ -12,6 +12,9 @@
     height: 5rem;
 }
 
+.react-responsive-modal-modal {
+    background: white;
+}
 
 .content {
     display: flex;
