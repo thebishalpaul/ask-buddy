@@ -6,15 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 import Login from "./components/Auth/Login";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import LoginForm from "./components/Auth/LoginForm";
 import SignUpForm from "./components/Auth/SignUpForm";
 
 
 
 function App() {
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,15 +36,17 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {user ? <Home /> : < Login />}
+        <Login />
+        {/* {user ? <Route path="/" element={<Home />}/> : < Login />} */}
       </div>
       <div className="auth-inner">
-            <Routes>
-              {/* <Route exact path="/" element={<Login />} /> */}
-              <Route path="/LoginForm" element={<LoginForm />} />
-              <Route path="/SignUpForm" element={<SignUpForm />} />
-            </Routes>
-          </div>
+        {/* <Routes> */}
+        {/* <Route exact path="/" element={<Login />} /> */}
+        <Route path="/" element={<Home />} exact />
+        <Route path="/LoginForm" element={<LoginForm />} />
+        <Route path="/SignUpForm" element={<SignUpForm />} />
+        {/* </Routes> */}
+      </div>
     </Router>
   );
 }

@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import axios from 'axios';
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import login from "../../actions/userActions";
+import Loading from "../Loading";
+
 const move = keyframes`
 0%{
     opacity:0;
@@ -247,8 +252,7 @@ function LoginForm() {
     pic: ""
   });
 
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -258,6 +262,7 @@ function LoginForm() {
         "Content-Type": "application/json"
       }
     }
+
     const body = {
       fullName: user.fullName,
       email: user.email,
@@ -277,35 +282,26 @@ function LoginForm() {
       })
   }
 
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const history = useHistory();
+  useEffect(() => {
+    if (userInfo) {
+      console.log(userInfo);
+      history.push("/");
+    }
+  }, [history, userInfo]);
+
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }
-      const body = {
-        email: user.email,
-        password: user.password,
-      }
-      setLoading(true);
-      await axios
-        .get('/login', body, config)
-        .then((res) => {
-          console.log("login axios msg: ");
-          console.log(res.data);
-        })
-      // .catch((error) => {
-      //   console.log("Error while login: " + error);
-      //   alert('Error in login');
-      // })
-      setLoading(false);
-    } catch (error) {
-      setError(error);
-    }
+    dispatch(
+      login(user.email, user.password)
+    );
   }
+
   return (
     <>
       {" "}
@@ -316,6 +312,7 @@ function LoginForm() {
 
         <Form className="signin">
           <Title>Sign In</Title>
+          {loading && <Loading />}
           <Input
             type="email"
             name="email"
