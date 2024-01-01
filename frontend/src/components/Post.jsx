@@ -169,12 +169,18 @@ function Post({ eachPost }) {
                                 <div className="postAns">
                                     {ReactHtmlParser(a?.answer)}
                                 </div>
+                                <div className="postFooter">
+                                    <div className="postFooterAction">
+                                        <ArrowCircleUpIcon />
+                                        <ArrowCircleDownIcon />
+                                    </div>
+                                </div>
                             </div>
                         </>
                     ))
                 }
 
-            </div>
+            </div >
         </div>
     )
 }
