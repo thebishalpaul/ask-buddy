@@ -6,11 +6,6 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 
 export default function SelectTopic() {
-  // const [selectedTopic,setSelectedTopic] = useState(null);
-
-  // const handleTopicChange = (event, newValue) => {
-  //   setSelectedTopic(newValue);
-  // }
 
   const options = topics.map((option) => {
     const firstLetter = option.title[0].toUpperCase();
@@ -27,8 +22,6 @@ export default function SelectTopic() {
         options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}
         groupBy={(option) => option.firstLetter}
         getOptionLabel={(option) => option.title}
-        // value={selectedTopic}
-        // onChange={handleTopicChange}
         sx={{ width: 300 }}
         aria-required
         renderInput={(params) => <TextField {...params} label="Select Topic" />}

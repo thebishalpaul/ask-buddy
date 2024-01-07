@@ -26,7 +26,6 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
 
   const handleTopicChange = (event, newValue) => {
     setTopic(newValue);
-    // console.log(newValue.title);
   }
 
   const options = topics.map((option) => {
@@ -93,7 +92,7 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
           <div className="navIcons">
             <a href="/"
               style={{ color: "black" }}
-            >  
+            >
               <HomeIcon
                 sx={{ width: 33, height: 33 }}
               />
@@ -137,7 +136,6 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
           >
             <div className="modalTitle">
               <h5>Add Question</h5>
-              {/* <h5>Share Link</h5> */}
             </div>
             <div className="modalInfo">
               <Avatar src={user?.photo} className='avatar' />

@@ -5,23 +5,14 @@ import { useState } from "react"
 
 function SidebarOptions({ item, setSearchInput, posts }) {
     const [open, setOpen] = useState(false);
-    const [selectedTitle, setSelectedTitle] = useState("");
-
-
-    const selectFun = (e) => {
-        const clickedTopic = e.target.textContent;
-        setSelectedTitle(clickedTopic);
-    }
 
     const filter = (e) => {
         e.preventDefault();
-        // selectFun();
         console.log("sidebar: " + posts);
         setSearchInput(posts.filter(f => f.topic.includes(e.target.textContent)));
         console.log(e.target.textContent);
     }
-    // filter();
-    // console.log(selectedTitle);
+   
 
     if (item.childrens) {
         return (

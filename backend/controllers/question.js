@@ -1,7 +1,6 @@
 const questionDb = require('../models/question');
 
 const saveQuestiontoDb = async (req, res) => {
-    console.log(req.body);
     try {
         await questionDb.create({
             questionName: req.body.questionName,
