@@ -6,9 +6,10 @@ const { connectDb } = require('./conn');
 const PORT = 3000;
 const questionRouter = require("./router/question");
 const answerRouter = require("./router/answer");
+const dotenv=require("dotenv");
 
 
-require('dotenv').config();
+dotenv.config();
 
 
 //midlleware
