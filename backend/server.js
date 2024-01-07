@@ -7,6 +7,10 @@ const PORT = 3000;
 const questionRouter = require("./router/question");
 const answerRouter = require("./router/answer");
 
+
+require('dotenv').config();
+
+
 //midlleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -14,7 +18,7 @@ app.use(express.static(path.join(`${__dirname}/../frontend/build`)))
 
 
 //mongodb connection
-connectDb("mongodb+srv://bishalpaul34:qwerty2@cluster0.qhb870e.mongodb.net/ask-buddy?retryWrites=true&w=majority")
+connectDb(process.env.MONGO_URL)
     .then(console.log("MongoDb connected successfully"))
     .catch((e) => console.log("At DB Connection:", e));
 
