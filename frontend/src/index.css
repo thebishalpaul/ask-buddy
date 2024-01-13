@@ -1,4 +1,18 @@
-*{
+* {
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --bg-main: #ECF2FF;
+  --bg-primary: #18122B;
+  --primary-text-color: black;
+  --secondary-text-color: white;
+}
+
+[data-theme="dark"] {
+  --bg-main: #18122B;
+  --bg-primary: #ECF2FF;
+  --primary-text-color: white;
+  --secondary-text-color: black;
 }

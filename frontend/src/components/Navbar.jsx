@@ -118,6 +118,13 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
                 sx={{ width: 56, height: 56 }} />
             </span>
           </div>
+          <div className="toggleButton">
+            <input type="checkbox" name="" id="checkbox" />
+            <label for="checkbox" className='toggleLabel'>
+              <span className='toggleBall'>
+              </span>
+            </label>
+          </div>
           <Button variant="contained" sx={{ background: "black" }}
             onClick={
               (e) => {

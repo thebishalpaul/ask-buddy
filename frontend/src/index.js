@@ -12,11 +12,12 @@ import store from "./app/store";
 
 TimeAgo.addDefaultLocale(en);
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store ={store}> 
-    <App /> 
+    <App data-theme="dark"/> 
     </Provider>
   </React.StrictMode>,
 );
