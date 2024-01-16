@@ -12,7 +12,6 @@ import Home from "./components/Home";
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.value);
-  // console.log("user here "+user);
   useEffect(() => {
     onAuthStateChanged(auth, (authUser) => {
       if (authUser) {

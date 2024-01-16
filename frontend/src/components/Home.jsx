@@ -5,23 +5,22 @@ import Feed from './Feed'
 import axios from 'axios';
 import "./css/Home.css"
 function Home() {
-  //Feed
+
   const [posts, setPosts] = useState([]);
   const [searchInput, setSearchInput] = useState([]);
   const [isError, setIsError] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     axios.get('/questions')
       .then((res) => {
-        // console.log(res.data);
         setPosts(res.data.reverse());
         setSearchInput(res.data);
       })
       .catch((error) => {
-        // console.log(error);
         setIsError(error.message);
       });
-  }, []);
+  }, [posts]);
   // ------------------
 
   return (
