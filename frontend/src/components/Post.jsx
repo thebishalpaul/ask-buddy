@@ -13,7 +13,6 @@ import './css/Post.css'
 import axios from 'axios';
 import ReactHtmlParser from 'html-react-parser'
 import { useSelector } from 'react-redux';
-import { selectUser } from '../feature/userSlice';
 
 function LastSeen({ date }) {
     return (
@@ -31,13 +30,13 @@ function Post({ eachPost }) {
     const [answer, setAnswer] = useState("");
     const [toggle, setToggle] = useState(false);
 
-    const user = useSelector(selectUser);
+    const user = useSelector(state=>state.user.value);
 
     const handleQuill = (value) => {
         setAnswer(value);
     }
 
-    console.log(answer);
+    // console.log(answer);
 
     const handleSubmit = async () => {
         if (eachPost?._id && answer !== "") {

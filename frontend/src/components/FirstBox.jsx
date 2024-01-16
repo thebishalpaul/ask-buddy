@@ -1,13 +1,12 @@
 import React from 'react'
 import { Avatar } from '@mui/material';
 import "./css/FirstBox.css"
-import { selectUser } from '../feature/userSlice';
 import {useSelector } from 'react-redux/es/hooks/useSelector';
 
 
 
 function FirstBox({setIsModalOpen}) {
-    const user = useSelector(selectUser);
+    const user = useSelector(state=>state.user.value);
     return (
         <div className="mainBox" onClick={(e)=>setIsModalOpen(true)}>
             <div className="boxAvatar">

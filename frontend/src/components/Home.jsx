@@ -13,12 +13,12 @@ function Home() {
   useEffect(() => {
     axios.get('/questions')
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setPosts(res.data.reverse());
-        setSearchInput(res.data.reverse());
+        setSearchInput(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         setIsError(error.message);
       });
   }, []);

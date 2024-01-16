@@ -11,7 +11,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import "./css/Navbar.css"
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout, selectUser } from '../feature/userSlice';
+import { logout } from '../feature/userSlice';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { Link } from "react-router-dom";
@@ -20,9 +20,9 @@ import { Link } from "react-router-dom";
 function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
 
   const [question, setQuestion] = useState("");
-  const [topic, setTopic] = useState("");
+  const [topic, setTopic] = useState();
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const user = useSelector(state=>state.user.value);
 
   const handleTopicChange = (event, newValue) => {
     setTopic(newValue);

@@ -6,11 +6,9 @@ const answerSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "question"
     },
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    },
     user: Object,
+}, {
+    timestamps: {createdAt:true,updatedAt:false}
 });
 
 module.exports = mongoose.model("answer", answerSchema);

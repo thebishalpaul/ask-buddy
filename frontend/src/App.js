@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { login, selectUser } from "./feature/userSlice";
+import { login } from "./feature/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Login from "./components/Auth/Login";
 import { onAuthStateChanged } from "firebase/auth";
@@ -10,9 +10,9 @@ import AboutUs from "./components/AboutUs";
 import Home from "./components/Home";
 
 function App() {
-  const user = useSelector(selectUser);
   const dispatch = useDispatch();
-
+  const user = useSelector(state => state.user.value);
+  // console.log("user here "+user);
   useEffect(() => {
     onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
@@ -24,7 +24,6 @@ function App() {
             uid: authUser.uid,
           })
         );
-        console.log("AuthUser", authUser);
       }
     });
   }, [dispatch]);
