@@ -21,6 +21,7 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
 
   const [question, setQuestion] = useState("");
   const [topic, setTopic] = useState();
+
   const dispatch = useDispatch();
   const user = useSelector(state=>state.user.value);
 
@@ -148,7 +149,7 @@ function Navbar({ setSearchInput, posts, isModalOpen, setIsModalOpen }) {
                 placeholder='ask your question here...'
               />
 
-              {/*-------------------- Select Topic------------- */}
+              {/*-------------------- Select Topic MUI------------- */}
               <Autocomplete
                 id="grouped-demo"
                 options={options.sort((a, b) => -b.firstLetter.localeCompare(a.firstLetter))}

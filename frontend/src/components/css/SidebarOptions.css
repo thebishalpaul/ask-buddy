@@ -74,6 +74,7 @@
     height: 0;
     overflow: hidden;
   }
+  
   .sidebar-item.open > .sidebar-content{
     height: auto;
   }

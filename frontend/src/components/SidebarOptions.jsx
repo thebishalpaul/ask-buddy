@@ -5,19 +5,14 @@ import { useState } from "react"
 
 function SidebarOptions({ item, setSearchInput, posts }) {
     const [open, setOpen] = useState(false);
-
     const filter = (e) => {
         e.preventDefault();
-        console.log("sidebar: " + posts);
         setSearchInput(posts.filter(f => f.topic.includes(e.target.textContent)));
-        console.log(e.target.textContent);
     }
-   
 
     if (item.childrens) {
         return (
             <div className={open ? "sidebar-item open" : "sidebar-item"}>
-                {/* <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/RedCat_8727.jpg/1280px-RedCat_8727.jpg" alt='' height={20} width={20}/> */}
                 <div className="sidebar-title">
                     {/* Parent Menu */}
                     <span>

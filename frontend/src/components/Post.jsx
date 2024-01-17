@@ -36,8 +36,6 @@ function Post({ eachPost }) {
         setAnswer(value);
     }
 
-    // console.log(answer);
-
     const handleSubmit = async () => {
         if (eachPost?._id && answer !== "") {
             const config = {
@@ -52,7 +50,6 @@ function Post({ eachPost }) {
             }
             await axios.post('/answers', body, config)
                 .then((res) => {
-                    console.log(res.data);
                     alert("Answer added successfully");
                     window.location.href = '/'
                 })

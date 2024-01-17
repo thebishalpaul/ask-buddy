@@ -8,9 +8,7 @@ const questionRouter = require("./router/question");
 const answerRouter = require("./router/answer");
 const dotenv = require("dotenv");
 
-
-dotenv.config();
-
+dotenv.config({ path: path.resolve(__dirname, './.env') });
 
 //midlleware
 app.use(express.json());
